@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
   public Rigidbody2D rb;
   public float force = 20f;
+  public float damage = 25f;
 
   void Start()
   {
@@ -15,5 +16,12 @@ public class Bullet : MonoBehaviour
   void OnCollisionEnter2D(Collision2D collision)
   {
     Destroy(gameObject);
+    GameObject objectCollided = collision.transform.gameObject;
+    switch(objectCollided.tag) {
+      case "Enemy":
+        objectCollided.GetComponent<Enemy>().TakeDamage(damage);
+      break;
+    }
+
   }
 }

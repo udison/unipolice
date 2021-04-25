@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Effects
   - Objects
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Effects
   - Objects
   - Bullets
-  - 
-  - 
+  - ViewCones
+  - Enemies
   - 
   - 
   - 
