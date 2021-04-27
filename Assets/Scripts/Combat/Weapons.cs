@@ -10,14 +10,15 @@ public class Weapons : MonoBehaviour
   public GameObject bulletPrefab;
   public GameObject capsulePrefab;
 
+  public float damage;
+  public int magSize = 18;
+  public int maxAmmo = 144;
+  private float reloadTime;
+
   public float fireRate = 10; // In bullets per second
   public bool singleFire = true;
   public bool burstFire = false;
   public bool fullAuto = false;
-
-  public int magSize = 18;
-  public int maxAmmo = 144;
-  private float reloadTime;
 
   public Text ammoCounter;
 
@@ -33,6 +34,12 @@ public class Weapons : MonoBehaviour
     BURST,
     FULLAUTO
   }
+
+  public enum types {
+    PISTOL,
+    RIFLE
+  }
+  public types type;
 
   private fireModes fireMode = fireModes.SINGLE;
   private float timeBetweenShots;
@@ -72,7 +79,8 @@ public class Weapons : MonoBehaviour
 
   void Shoot() {
     if(canShoot && ammo > 0) {
-      Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+      GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+      bullet.GetComponent<Bullet>().damage = damage;
       Instantiate(capsulePrefab, ejectorPoint.position, ejectorPoint.rotation);
       PlaySound(shotSound);
       

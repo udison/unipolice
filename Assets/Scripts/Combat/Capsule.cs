@@ -12,7 +12,8 @@ public class Capsule : MonoBehaviour
   {
     float finalForce = baseForce + baseForce * Random.Range(0.65f, 1.35f);
     float finalRot = baseRotation + baseRotation * Random.Range(0.65f, 1.35f);
-    Vector2 finalDir = new Vector2(Random.Range(-0.5f, 0.5f), 1);
+    Vector2 finalDir = transform.up;
+    finalDir.x *= Random.Range(0.65f, 1.35f);
 
     rb.AddForce(finalDir * finalForce, ForceMode2D.Impulse);
     rb.AddTorque(-finalRot, ForceMode2D.Impulse);
