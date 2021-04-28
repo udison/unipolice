@@ -21,6 +21,10 @@ public class Bullet : MonoBehaviour
       case "Enemy":
         objectCollided.GetComponent<Enemy>().TakeDamage(damage);
       break;
+
+      case "Player":
+        objectCollided.GetComponent<Player>().TakeDamage(damage);
+      break;
     }
 
   }

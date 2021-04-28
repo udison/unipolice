@@ -45,8 +45,12 @@ public class Weapons : MonoBehaviour
   private float timeBetweenShots;
   private float cooldown;
   private bool canShoot = true;
+  private bool heldByPlayer = false;
 
   void Start() {
+    if(transform.parent.transform.parent.tag == "Player")
+      heldByPlayer = true;
+
     fireMode = fullAuto ? fireModes.FULLAUTO : singleFire ? fireModes.SINGLE : fireModes.BURST;
     timeBetweenShots = 1 / fireRate;
 
@@ -58,26 +62,28 @@ public class Weapons : MonoBehaviour
 
   void Update()
   {
+    if(heldByPlayer) {
 
-    // If fire mode is SINGLE or BURST and PRESSED fire1 OR
-    //    fire mode is FULL AUTO and HOLD DOWN fire1
-    if(((fireMode == fireModes.SINGLE || fireMode == fireModes.BURST) && Input.GetButtonDown("Fire1")) ||
-        (fireMode == fireModes.FULLAUTO && Input.GetButton("Fire1"))) {
-      Shoot();
-    }
+      // If fire mode is SINGLE or BURST and PRESSED fire1 OR
+      //    fire mode is FULL AUTO and HOLD DOWN fire1
+      if(((fireMode == fireModes.SINGLE || fireMode == fireModes.BURST) && Input.GetButtonDown("Fire1")) ||
+          (fireMode == fireModes.FULLAUTO && Input.GetButton("Fire1"))) {
+        Shoot();
+      }
 
-    // If press 'B' go to next firemode
-    if(Input.GetKeyDown(KeyCode.B)) {
-      NextFireMode();
-    }
+      // If press 'B' go to next firemode
+      if(Input.GetKeyDown(KeyCode.B)) {
+        NextFireMode();
+      }
 
-    // If press 'R' reload the weapon
-    if(Input.GetKeyDown(KeyCode.R)) {
-      Reload();
+      // If press 'R' reload the weapon
+      if(Input.GetKeyDown(KeyCode.R)) {
+        Reload();
+      }
     }
   }
 
-  void Shoot() {
+  public void Shoot() {
     if(canShoot && ammo > 0) {
       GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
       bullet.GetComponent<Bullet>().damage = damage;
@@ -85,7 +91,6 @@ public class Weapons : MonoBehaviour
       PlaySound(shotSound);
       
       ammo--;
-
       if(ammo == 0) {
         if(remainingAmmo > 0)
           Reload();
@@ -128,7 +133,8 @@ public class Weapons : MonoBehaviour
   }
 
   void RefreshGUI() {
-    ammoCounter.text = ammo + "/" + remainingAmmo;
+    if(heldByPlayer)
+      ammoCounter.text = ammo + "/" + remainingAmmo;
   }
 
   void NextFireMode() {
