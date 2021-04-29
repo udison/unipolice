@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
   public float moveSpeed = 5f;
   public Camera cam;
+  public bool canMove = true;
 
   private Rigidbody2D rb;
   private Vector2 movement;
@@ -18,12 +19,14 @@ public class PlayerMovement : MonoBehaviour
 
   void Update()
   {
-    movement.x = Input.GetAxisRaw("Horizontal");
-    movement.y = Input.GetAxisRaw("Vertical");
+    if(canMove) {
+      movement.x = Input.GetAxisRaw("Horizontal");
+      movement.y = Input.GetAxisRaw("Vertical");
 
-    isRunning = Input.GetKey(KeyCode.LeftShift);
+      isRunning = Input.GetKey(KeyCode.LeftShift);
 
-    mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+      mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    }
   }
 
   void FixedUpdate() {
