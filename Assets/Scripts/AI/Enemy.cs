@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
   }
 
   void Die() {
+    gameHandler.GetComponent<Objectives>().SendMessage("UpdateQuestObjective", Objectives.QuestType.KILL_ENEMIES);
     Destroy(gameObject);
   }
 }

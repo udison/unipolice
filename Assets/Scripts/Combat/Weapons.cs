@@ -44,10 +44,13 @@ public class Weapons : MonoBehaviour
   private fireModes fireMode = fireModes.SINGLE;
   private float timeBetweenShots;
   private float cooldown;
-  private bool canShoot = true;
+  public bool canShoot = true;
   private bool heldByPlayer = false;
 
+  private GameHandler gameHandler;
+
   void Start() {
+    gameHandler = GameHandler.GetGameHandler();
     if(transform.parent.transform.parent.tag == "Player")
       heldByPlayer = true;
 
@@ -62,7 +65,7 @@ public class Weapons : MonoBehaviour
 
   void Update()
   {
-    if(heldByPlayer) {
+    if(heldByPlayer && !gameHandler.isPaused) {
 
       // If fire mode is SINGLE or BURST and PRESSED fire1 OR
       //    fire mode is FULL AUTO and HOLD DOWN fire1
@@ -105,20 +108,25 @@ public class Weapons : MonoBehaviour
   }
 
   void Reload() {
-    if(remainingAmmo > 0) {
-      SetCooldown(reloadTime);
+    if(remainingAmmo > 0 && ammo != magSize) {
       PlaySound(reloadSound);
-
-      int spaceAvailable = magSize - ammo;
-      if(spaceAvailable <= remainingAmmo) {
-        ammo += spaceAvailable;
-        remainingAmmo -= spaceAvailable;
-      }
-      else {
-        ammo = remainingAmmo;
-        remainingAmmo = 0;
-      }
+      StartCoroutine("ReloadCoroutine");
     }
+  }
+
+  IEnumerator ReloadCoroutine() {
+    yield return new WaitForSeconds(reloadTime);
+
+    int spaceAvailable = magSize - ammo;
+    if(spaceAvailable <= remainingAmmo) {
+      ammo += spaceAvailable;
+      remainingAmmo -= spaceAvailable;
+    }
+    else {
+      ammo = remainingAmmo;
+      remainingAmmo = 0;
+    }
+    RefreshGUI();
   }
 
   void SetCooldown(float cooldown) {

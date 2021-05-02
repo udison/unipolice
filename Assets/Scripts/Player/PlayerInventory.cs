@@ -32,12 +32,14 @@ public class PlayerInventory : MonoBehaviour
   void EquipPrimary() {
     secondaryWeapon.SetActive(false);
     primaryWeapon.SetActive(true);
+    primaryWeapon.GetComponent<Weapons>().canShoot = true;
     spriteRenderer.sprite = holdingRifle;
   }
 
   void EquipSecondary() {
     primaryWeapon.SetActive(false);
     secondaryWeapon.SetActive(true);
+    secondaryWeapon.GetComponent<Weapons>().canShoot = true;
     spriteRenderer.sprite = holdingPistol;
   }
 }

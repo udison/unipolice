@@ -5,15 +5,37 @@ using UnityEngine;
 public class GameHandler : MonoBehaviour
 {
   public GameObject player;
-  public GameObject pauseMenu;
+  public PauseMenu pauseMenu;
+  public bool isPaused = false;
+  private Objectives objectives;
+
+  void Start() {
+    objectives = GetComponent<Objectives>();
+  }
 
   void Update() {
 
     if(Input.GetKeyDown(KeyCode.Escape)) {
-      pauseMenu.SetActive(!pauseMenu.active);
-      Time.timeScale = pauseMenu.active ? 0 : 1;
-      // player.GetComponent<PlayerMovement>().canMove = pauseMenu.active;
+      pauseMenu.TogglePauseMenu();
     }
+  }
+
+  public bool IsAllQuestsCompleted() {
+    Objectives.Quest[] quests = objectives.quests;
+    bool ret = true;
+
+    for(int i = 0; i < quests.Length; i++) {
+      if(!quests[i].isCompleted) {
+        ret = false;
+        break;
+      }
+    }
+
+    return ret;
+  }
+
+  public void SetPaused(bool state) {
+    isPaused = state;
   }
 
   public static GameHandler GetGameHandler() {
@@ -30,5 +52,9 @@ public class GameHandler : MonoBehaviour
 
   public Vector3 GetPlayerPosition() {
     return player.transform.position;
+  }
+
+  public int GetPlayerLayer() {
+    return player.layer;
   }
 }
