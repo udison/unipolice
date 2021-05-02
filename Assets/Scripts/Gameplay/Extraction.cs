@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Extraction : MonoBehaviour
 {
   public string nextLevel;
+  
   GameHandler gameHandler;
 
   void Start() {

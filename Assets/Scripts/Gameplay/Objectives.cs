@@ -7,6 +7,7 @@ public class Objectives : MonoBehaviour
 {
   public GameObject questContainer;
   public GameObject questPrefab;
+  public GameObject arrow;
 
   public enum QuestType {
     KILL_ENEMIES,
@@ -72,6 +73,7 @@ public class Objectives : MonoBehaviour
   void UpdateQuestObjective(QuestType type) {
     switch(type) {
       case QuestType.KILL_ENEMIES:
+      case QuestType.FREE_HOSTAGES:
         for(int i = 0; i < quests.Length; i++) {
           if(quests[i].type == type) {
             quests[i].counter++;
@@ -79,6 +81,12 @@ public class Objectives : MonoBehaviour
           }
         }
       break;
+    }
+
+    // If all quests are completed
+    if(GameHandler.GetGameHandler().IsAllQuestsCompleted()) {
+      Debug.Log("Mostra a seta");
+      arrow.SetActive(true);
     }
   }
 }

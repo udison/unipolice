@@ -11,6 +11,7 @@ public class GameHandler : MonoBehaviour
 
   void Start() {
     objectives = GetComponent<Objectives>();
+    Cursor.visible = false;
   }
 
   void Update() {
@@ -36,6 +37,7 @@ public class GameHandler : MonoBehaviour
 
   public void SetPaused(bool state) {
     isPaused = state;
+    Cursor.visible = state;
   }
 
   public static GameHandler GetGameHandler() {
@@ -56,5 +58,10 @@ public class GameHandler : MonoBehaviour
 
   public int GetPlayerLayer() {
     return player.layer;
+  }
+
+  // Math functions
+  float Normalize(float x, float min, float max) {
+    return (x - min) / (max - min);
   }
 }

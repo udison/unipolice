@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
   public float armor;
   public Text healthText;
 
+  public GameObject pauseMenu;
+  public GameObject gameOver;
+  public GameObject crosshair;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -27,6 +31,11 @@ public class Player : MonoBehaviour
   }
 
   void Die() {
+    Destroy(pauseMenu);
+    crosshair.SetActive(false);
+    gameOver.SetActive(true);
+    Cursor.visible = true;
+
     Destroy(gameObject);
   }
 
