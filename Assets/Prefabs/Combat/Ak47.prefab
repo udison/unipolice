@@ -115,7 +115,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   ejectorPoint: {fileID: 3035763430221482725}
   bulletPrefab: {fileID: 4409935250909055348, guid: 41bdd479b17c36944bdefc5b897225b5, type: 3}
   capsulePrefab: {fileID: 8396596027303489855, guid: 825880adb7253ec478b48acf58ebbedc, type: 3}
+  muzzleFlashPrefab: {fileID: 5188436278967689638, guid: bd52e6cc66b136242a7da08cf8162263, type: 3}
   damage: 36
   magSize: 30
   maxAmmo: 270
@@ -174,6 +175,7 @@ MonoBehaviour:
   shotSound: {fileID: 8300000, guid: 7275fed90d3f2ea4b94c7e3cf8d68977, type: 3}
   reloadSound: {fileID: 8300000, guid: 4600567e076e1de40be4086b201350be, type: 3}
   type: 1
+  canShoot: 1
 --- !u!82 &3035763430315934596
 AudioSource:
   m_ObjectHideFlags: 0

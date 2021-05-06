@@ -284,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questContainer: {fileID: 4188665765791980486}
   questPrefab: {fileID: 8621893242722005636, guid: 63a4a48a7779769418de9883de3120dc, type: 3}
+  arrow: {fileID: 0}
   quests: []
 --- !u!1 &4188665764861509104
 GameObject:
@@ -2627,6 +2628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a81a1a239b08141977d9fca7bf36f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevel: 
 --- !u!1 &4188665766553253403
 GameObject:
   m_ObjectHideFlags: 0

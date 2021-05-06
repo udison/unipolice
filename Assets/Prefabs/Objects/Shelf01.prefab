@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4092170569411926507}
   - component: {fileID: 4552859960659866745}
   - component: {fileID: 8169971430162897468}
+  - component: {fileID: 8854378682640564475}
   m_Layer: 0
   m_Name: Shelf01
   m_TagString: Objects
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +111,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &8854378682640564475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935009739633797327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 553c87988b30442600000000
+  m_ShapePath:
+  - {x: -1, y: -2, z: 0}
+  - {x: -1.0088959, y: -1.7554626, z: 0}
+  - {x: -0.8891525, y: -1.7508621, z: 0}
+  - {x: -0.8852997, y: 1.7614517, z: 0}
+  - {x: -0.9893303, y: 1.769455, z: 0}
+  - {x: -1, y: 2, z: 0}
+  - {x: -0.75099945, y: 1.9979286, z: 0}
+  - {x: -0.75099945, y: 1.8873978, z: 0}
+  - {x: 0.75035477, y: 1.8966103, z: 0}
+  - {x: 0.7549591, y: 1.9933205, z: 0}
+  - {x: 1, y: 2, z: 0}
+  - {x: 1.0082626, y: 1.7446175, z: 0}
+  - {x: 0.8885231, y: 1.7400131, z: 0}
+  - {x: 0.8793144, y: -1.7554626, z: 0}
+  - {x: 0.99905396, y: -1.7554626, z: 0}
+  - {x: 1, y: -2, z: 0}
+  - {x: 0.7503586, y: -1.9995499, z: 0}
+  - {x: 0.7549629, y: -1.8798103, z: 0}
+  - {x: -0.7463875, y: -1.8844147, z: 0}
+  - {x: -0.7463875, y: -2.0041542, z: 0}
+  m_ShapePathHash: -527859307
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -186762

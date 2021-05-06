@@ -9,6 +9,7 @@ public class Weapons : MonoBehaviour
   public Transform ejectorPoint;
   public GameObject bulletPrefab;
   public GameObject capsulePrefab;
+  public GameObject muzzleFlashPrefab;
 
   public float damage;
   public int magSize = 18;
@@ -91,6 +92,7 @@ public class Weapons : MonoBehaviour
       GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
       bullet.GetComponent<Bullet>().damage = damage;
       Instantiate(capsulePrefab, ejectorPoint.position, ejectorPoint.rotation);
+      Instantiate(muzzleFlashPrefab, ejectorPoint.position, new Quaternion(ejectorPoint.rotation.x, ejectorPoint.rotation.y, ejectorPoint.rotation.z, 0));
       PlaySound(shotSound);
       
       ammo--;

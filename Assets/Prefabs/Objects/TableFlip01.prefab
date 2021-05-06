@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6702296402194441598}
   - component: {fileID: 6776042805315337378}
   - component: {fileID: 1032733174191768504}
+  - component: {fileID: -5841643451673922968}
   m_Layer: 0
   m_Name: TableFlip01
   m_TagString: Untagged
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,3 +119,33 @@ PolygonCollider2D:
       - {x: 1, y: 2}
       - {x: 1, y: -1.75}
       - {x: 1, y: -2}
+--- !u!114 &-5841643451673922968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313087804560416739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 553c87988b30442600000000
+  m_ShapePath:
+  - {x: -1, y: -2, z: 0}
+  - {x: -1.0010872, y: -1.7540436, z: 0}
+  - {x: 0.75715256, y: -1.7662544, z: 0}
+  - {x: 0.7449417, y: 0.39491653, z: 0}
+  - {x: -0.98887634, y: 0.39491653, z: 0}
+  - {x: -1, y: 2, z: 0}
+  - {x: 1, y: 2, z: 0}
+  - {x: 1, y: -2, z: 0}
+  m_ShapePathHash: -329173179
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -185410

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+  private GameHandler gameHandler;
   public GameObject hand;
   public GameObject primaryWeapon;
   public GameObject secondaryWeapon;
+  public GameObject flashlight;
   public Sprite holdingRifle;
   public Sprite holdingPistol;
 
   private SpriteRenderer spriteRenderer;
 
   void Start() {
+    gameHandler = GameHandler.GetGameHandler();
     spriteRenderer = GetComponent<SpriteRenderer>();
 
     if(primaryWeapon != null)
@@ -27,6 +30,9 @@ public class PlayerInventory : MonoBehaviour
 
     else if(Input.GetKeyDown(KeyCode.Alpha2) && secondaryWeapon != null)
       EquipSecondary();
+
+    if(Input.GetKeyDown(KeyCode.Q) && !gameHandler.isPaused)
+      ToggleFlashlight();
   }
 
   void EquipPrimary() {
@@ -41,5 +47,9 @@ public class PlayerInventory : MonoBehaviour
     secondaryWeapon.SetActive(true);
     secondaryWeapon.GetComponent<Weapons>().canShoot = true;
     spriteRenderer.sprite = holdingPistol;
+  }
+
+  void ToggleFlashlight() {
+    flashlight.SetActive(!flashlight.active);
   }
 }
