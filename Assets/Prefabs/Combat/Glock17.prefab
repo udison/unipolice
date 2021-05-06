@@ -103,7 +103,7 @@ MonoBehaviour:
   ejectorPoint: {fileID: 8607244185396287406}
   bulletPrefab: {fileID: 4409935250909055348, guid: 41bdd479b17c36944bdefc5b897225b5, type: 3}
   capsulePrefab: {fileID: 2324197086852950779, guid: 55016e3a71f564249ad61e9f8d1f1faf, type: 3}
-  damage: 24
+  damage: 26
   magSize: 18
   maxAmmo: 144
   fireRate: 8
@@ -114,6 +114,7 @@ MonoBehaviour:
   shotSound: {fileID: 8300000, guid: 478c00092d2133a4b898220769082492, type: 3}
   reloadSound: {fileID: 8300000, guid: 4600567e076e1de40be4086b201350be, type: 3}
   type: 0
+  canShoot: 1
 --- !u!82 &8607244185368846031
 AudioSource:
   m_ObjectHideFlags: 0
