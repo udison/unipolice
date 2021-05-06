@@ -44,6 +44,10 @@ public class GameHandler : MonoBehaviour
     return GameObject.Find("_GameHandler").GetComponent<GameHandler>();
   }
 
+  public static Stats GetStats() {
+    return GameObject.Find("_Stats").GetComponent<Stats>();
+  }
+
   public Player GetPlayer() {
     return player.GetComponent<Player>();
   }

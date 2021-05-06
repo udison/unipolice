@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
   private float time = 0;
 
   void Start() {
+    Cursor.visible = true;
     newGame.onClick.AddListener(NewGame);
     quit.onClick.AddListener(Quit);
   }

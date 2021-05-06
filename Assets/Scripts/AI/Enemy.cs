@@ -12,12 +12,14 @@ public class Enemy : MonoBehaviour
   private float attackDuration;
   private bool canAttack = true;
   private bool atkCoroutineStarted = false;
+  private Stats stats;
 
   void Start() {
     rb = GetComponent<Rigidbody2D>();
     equippedWeapon = hand.transform.GetComponentInChildren<Weapons>();
     attackDuration = Random.Range(0.8f, 1.4f);
     gameHandler = GameHandler.GetGameHandler();
+    stats = GameHandler.GetStats();
   }
 
   void Update() {
@@ -52,6 +54,7 @@ public class Enemy : MonoBehaviour
 
   public void TakeDamage(float damage) {
     health -= damage;
+    stats.hits++;
 
     if(health <= 0)
       Die();
@@ -59,6 +62,7 @@ public class Enemy : MonoBehaviour
 
   void Die() {
     gameHandler.GetComponent<Objectives>().SendMessage("UpdateQuestObjective", Objectives.QuestType.KILL_ENEMIES);
+    stats.enemiesKilled++;
     Destroy(gameObject);
   }
 }

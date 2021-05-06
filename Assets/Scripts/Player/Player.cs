@@ -13,14 +13,18 @@ public class Player : MonoBehaviour
   public GameObject gameOver;
   public GameObject crosshair;
 
+  private Stats stats;
+
   // Start is called before the first frame update
   void Start()
   {
     RefreshUI();
+    stats = GameHandler.GetStats();
   }
 
   public void TakeDamage(float damage) {
     health -= Mathf.Ceil(damage - ((armor / 100) * damage));
+    stats.lostHealth = 100 - (int)health;
 
     if(health <= 0) {
       health = 0;

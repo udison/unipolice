@@ -47,6 +47,7 @@ public class Weapons : MonoBehaviour
   private float cooldown;
   public bool canShoot = true;
   private bool heldByPlayer = false;
+  private Stats stats;
 
   private GameHandler gameHandler;
 
@@ -62,6 +63,7 @@ public class Weapons : MonoBehaviour
     remainingAmmo = maxAmmo;
     reloadTime = reloadSound.length;
     audioSource = GetComponent<AudioSource>();
+    stats = GameHandler.GetStats();
   }
 
   void Update()
@@ -94,6 +96,15 @@ public class Weapons : MonoBehaviour
       Instantiate(capsulePrefab, ejectorPoint.position, ejectorPoint.rotation);
       Instantiate(muzzleFlashPrefab, ejectorPoint.position, new Quaternion(ejectorPoint.rotation.x, ejectorPoint.rotation.y, ejectorPoint.rotation.z, 0));
       PlaySound(shotSound);
+
+      if(heldByPlayer) {
+        stats.shots++;
+
+        if(type == types.RIFLE)
+          stats.shotWithRifle = true;
+        else
+          stats.shotWithPistol = true;
+      }
       
       ammo--;
       if(ammo == 0) {
